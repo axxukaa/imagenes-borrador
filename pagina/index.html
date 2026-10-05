@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>no importa el titulo aca xd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almendra+Display&family=Kaushan+Script&family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400;500;700;900&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+    --body-bg-image: url('https://i.pinimg.com/1200x/f2/d2/5e/f2d25eb63bcc3a7b47f7be579771f3c2.jpg');
+    --content: #050c2e;
+}
+* { box-sizing: border-box; }
+/* ===== TEXTO: que se corte y se vea bien dentro de su caja ===== */
+main { min-width: 0; }
+main p, .dmc-desc { overflow-wrap: anywhere; }
+.dmc-panel {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    overflow-x: hidden;
+    line-height: 1.7;
+}
+/* ===== BASE Y FUENTES (estética DMC3) ===== */
+body {
+    font-family: 'Almendra', Georgia, serif;
+    font-size: 16px;
+    margin: 0;
+    color: #fefefe;
+    background-color: #ffffff4b;
+    background-image: var(--body-bg-image);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    cursor: url('https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/cursorwii.png?raw=true') 6 2, auto;
+}
+/* mismo cursor también sobre los elementos clickeables (si no, el navegador
+   los pisa con su flechita/manito por defecto) */
+a, button, .dmc-menu-item, .psp-dpad, .pw-swatch, #pwClear, .qw-next,
+#mp li, .dmc-comments-form button, .c-del {
+    cursor: url('https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/cursorwii.png?raw=true') 6 2, pointer;
+}
+h1, h2, h3 { font-family: 'Almendra Display', 'Almendra', serif; letter-spacing: 1px; color: #5b7dff; }
+h1 { font-size: 40px; }
+strong { color: #4766d6; }
+#container { max-width: 1200px; margin: 0 auto; }
+#container a { color: #eaf0ff; font-weight: bold; }
+#flex { display: flex; }
+aside { background-color: #050c2ef4; width: 260px; padding: 20px; font-size: smaller; }
+main { background-color: #020b33; flex: 1; padding: 20px; order: 2; }
+#leftSidebar { order: 1; }
+#rightSidebar { order: 3; }
+footer { background-color: #07123a; width: 100%; height: 40px; padding: 10px; text-align: center; }
+.box { background-color: #0c0c0c55; border: 1px solid #0b048a; padding: 10px; }
+@media only screen and (max-width: 1100px) {
+    #flex { flex-wrap: wrap; }
+    aside { width: 100%; }
+    main { order: 1; }
+    #leftSidebar { order: 2; }
+    #rightSidebar { order: 3; }
+}
+
+/* ===== TÍTULO ESTILO DMC (logo original, en azul) ===== */
+#dmcTitle { position: relative; max-width: 920px; margin: 0 auto; padding: 30px 20px 16px; display: flex; align-items: center; justify-content: center; }
+.dt-main { position: relative; z-index: 1; text-align: center; }
+.dt-name, .dt-sub {
+    font-family: 'Kaushan Script', 'Almendra Display', cursive; font-weight: 400; line-height: 1.1; margin: 0;
+    color: #000; paint-order: stroke fill; -webkit-text-stroke: 4px #4f86ff;
+    text-shadow:
+        0 0 6px rgba(60,120,255,.95), 0 0 16px rgba(30,80,255,.8), 0 0 34px rgba(20,60,230,.6),
+        -12px -5px 3px rgba(40,90,255,.45), -24px -10px 6px rgba(40,90,255,.28), -38px -15px 10px rgba(30,70,230,.16);
+}
+.dt-name { font-size: clamp(30px, 5.6vw, 66px); }
+.dt-sub { font-size: clamp(18px, 2.6vw, 30px); text-align: right; padding-right: 6%; margin-top: 2px; -webkit-text-stroke-width: 3px; }
+.dt-emblem { position: relative; z-index: 0; margin-left: -10px; height: clamp(110px, 20vw, 200px); width: auto; }
+@media only screen and (max-width: 600px) { #dmcTitle { flex-direction: column; } .dt-emblem { margin: 0; } }
+
+/* ===== SPOTIFY (en main) ===== */
+#spotify-wrap { margin-bottom: 20px; text-align: center; }
+#spotify-extra-img { display: none; width: 100%; max-width: 400px; border-radius: 8px; margin-top: 10px; }
+
+/* ===== REPRODUCTOR MP3 (sidebar derecho) ===== */
+#mp { --accent: #1728e4; --panel: #12141a; width: 85%; margin: 0 auto; padding: 8px; border-radius: 14px; background: linear-gradient(145deg,#262932,#16181e); color: #6a79a8; }
+#mp * { box-sizing: border-box; }
+#mp .screen { background: var(--panel); border-radius: 10px; padding: 6px; text-align: center; box-shadow: inset 0 2px 6px rgba(0,0,0,.6); }
+#mp .cover { width: 100px; height: 100px; object-fit: cover; border: 2px solid var(--accent); border-radius: 6px; background: #000; }
+#mp .title { margin: 5px 0; font-size: 11px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#mp .bar { height: 5px; background: #2a2d36; border-radius: 3px; cursor: pointer; overflow: hidden; }
+#mp .fill { height: 100%; width: 0; background: var(--accent); }
+#mp .time { margin-top: 4px; font-size: 10px; font-weight: bold; color: var(--accent); }
+#mp .wheel { position: relative; width: 100px; height: 100px; margin: 10px auto 4px; border-radius: 50%; background: radial-gradient(circle at 30% 30%,#33363f,#1b1d23); box-shadow: 0 3px 8px rgba(0,0,0,.6), inset 0 1px 2px rgba(255,255,255,.08); }
+#mp .wheel button { position: absolute; background: none; border: 0; color: #999; cursor: pointer; font-size: 12px; padding: 4px; }
+#mp .wheel button:hover { color: var(--accent); }
+#mp .prev { left: 4px; top: 50%; transform: translateY(-50%); }
+#mp .next { right: 4px; top: 50%; transform: translateY(-50%); }
+#mp .wheel .play { left: 50%; top: 50%; transform: translate(-50%,-50%); width: 34px; height: 34px; padding: 0; border-radius: 50%; background: #1d1f25; color: #fff; font-size: 13px; box-shadow: inset 0 2px 4px rgba(0,0,0,.7); }
+#mp ul { list-style: none; margin: 8px 0 0; padding: 0; font-size: 11px; }
+#mp li { padding: 4px 6px; border-radius: 5px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#mp li:hover { background: #2a2d36; }
+#mp li.on { color: var(--accent); font-weight: bold; }
+/* FIX: overflow visible + más alto de línea para que no se corte la tilde de "más" */
+#mp li.mas { text-align: center; font-size: 10px; color: #999; border: 1px solid #2a2d36; margin: 3px 0; overflow: visible; line-height: 1.8; padding: 6px; }
+#mp ul.cerrada li.extra { display: none; }
+
+
+
+/* ===== MENÚ "PAPEL RASGADO" ===== */
+.torn-nav { position: relative; width: 100%; margin: 10px 0 0; }
+.torn-strip {
+    display: flex; justify-content: space-evenly; align-items: center; flex-wrap: wrap; gap: 10px;
+    background-color: #03033700; padding: 10px 10px 15px;
+    clip-path: polygon(0% 8%, 5% 2%, 10% 6%, 15% 1%, 20% 5%, 25% 0%, 30% 4%, 35% 1%, 40% 6%, 45% 2%, 50% 5%, 55% 1%, 60% 6%, 65% 2%, 70% 5%, 75% 1%, 80% 6%, 85% 2%, 90% 5%, 95% 1%, 100% 6%, 100% 94%, 95% 99%, 90% 95%, 85% 99%, 80% 96%, 75% 100%, 70% 95%, 65% 99%, 60% 94%, 55% 98%, 50% 95%, 45% 99%, 40% 94%, 35% 98%, 30% 95%, 25% 99%, 20% 94%, 15% 98%, 10% 95%, 5% 99%, 0% 92%);
+}
+.torn-nav .nav-item { position: relative; display: flex; flex-direction: column; align-items: center; text-decoration: none; }
+.torn-nav .nav-item img { height: 100px; width: 200px; max-width: 400px; object-fit: cover; filter: drop-shadow(0 3px 4px rgba(0,0,0,.4)); transition: transform .2s ease; }
+.torn-nav .nav-item:hover img { transform: scale(1.08) rotate(-2deg); }
+.torn-nav .nav-item span {
+    position: absolute; left: 50%; bottom: 10px; transform: translate(-50%, 6px); margin: 0;
+    font-family: 'Cinzel', Georgia, serif; font-size: 15px; color: #f4f2ef; font-weight: bold; text-align: center; white-space: nowrap;
+    background-color: rgba(20,10,5,.55); padding: 3px 10px; border-radius: 4px;
+    opacity: 0; transition: opacity .2s ease, transform .2s ease; pointer-events: none;
+}
+.torn-nav .nav-item:hover span { opacity: 1; transform: translate(-50%, 0); }
+
+/* ===== GATOS AMASABLES ===== */
+.squish-cat { width: 180px; margin: 10px auto; touch-action: none; }
+.squish-cat img { width: 180px; display: block; transition: transform .12s ease-out; transform-origin: center bottom; cursor: grab; user-select: none; -webkit-user-drag: none; }
+.squish-cat.pressed img { cursor: grabbing; }
+
+/* ===== CAJA DE DIÁLOGO (estética DMC3) ===== */
+.quote-window { background: #050812; border: 2px solid #0e1a52; border-radius: 4px; overflow: hidden; margin-bottom: 16px; box-shadow: 0 8px 18px rgba(0,0,0,.5); }
+.qw-titlebar { background: linear-gradient(135deg,#0b164f,#040a26); border-bottom: 2px solid #1b2f8c; padding: 8px 12px; display: flex; align-items: center; gap: 8px; font-family: 'Cinzel Decorative','Cinzel',serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #c9d4ff; }
+.qw-titlebar .qw-star { font-size: 12px; color: #4a6cff; }
+.qw-titlebar .qw-title { flex: 1; text-align: center; }
+.qw-titlebar .qw-dots { display: flex; gap: 4px; }
+.qw-titlebar .qw-dots span { width: 6px; height: 6px; border-radius: 1px; background: #4a6cff; display: inline-block; }
+.qw-body { padding: 16px 14px 12px; position: relative; }
+.qw-tag { display: inline-block; background: #13227a; border: 1px solid #2d49c7; color: #e4e9ff; font-family: 'Cinzel',serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; margin-bottom: 12px; }
+.qw-sticker { position: absolute; top: 12px; right: 14px; font-size: 16px; }
+.qw-text { font-family: 'Cinzel',serif; font-size: 13px; line-height: 1.6; letter-spacing: .4px; color: #dfe4ff; margin: 0 0 14px; min-height: 40px; }
+.qw-divider { border: none; border-top: 1px dashed #1b2f8c; margin: 8px 0 10px; }
+.qw-footer { display: flex; justify-content: space-between; align-items: center; font-size: 10px; }
+.qw-footer .qw-count { color: #5a6bb0; letter-spacing: 1px; }
+.qw-next { background: none; border: none; color: #4a6cff; font-family: 'Cinzel',serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; }
+.qw-next:hover { color: #92a6ff; }
+
+/* ===== MINI PAINT (estética DMC3) ===== */
+.paint-window { background: #0a1030; border: 2px solid #0e1a52; border-radius: 4px; overflow: hidden; margin-top: 16px; box-shadow: 0 8px 18px rgba(0,0,0,.5); }
+.pw-titlebar { background: linear-gradient(135deg,#0b164f,#040a26); border-bottom: 2px solid #1b2f8c; color: #c9d4ff; font-family: 'Cinzel Decorative','Cinzel',serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 6px 10px; display: flex; align-items: center; gap: 6px; }
+.pw-titlebar .pw-controls { margin-left: auto; display: flex; gap: 4px; font-size: 9px; }
+.pw-titlebar .pw-controls span { background: #13227a; color: #c9d4ff; width: 14px; height: 13px; display: inline-flex; align-items: center; justify-content: center; border-radius: 1px; }
+.pw-menubar { background: #0e1a52; font-family: 'Cinzel',serif; font-size: 10px; letter-spacing: .5px; padding: 4px 10px; display: flex; gap: 12px; color: #c9d4ff; border-bottom: 1px solid #1b2f8c; }
+.pw-menubar a { color: #4a6cff; text-decoration: underline; cursor: pointer; }
+#pwCanvas { display: block; width: 100%; height: 170px; background: #fff; touch-action: none; cursor: crosshair; }
+.pw-palette { display: flex; flex-wrap: wrap; gap: 3px; padding: 8px; background: #0e1a52; border-top: 1px solid #1b2f8c; }
+.pw-swatch { width: 16px; height: 16px; border-radius: 1px; border: 1px solid rgba(0,0,0,.4); cursor: pointer; }
+.pw-swatch.active { outline: 2px solid #4a6cff; outline-offset: 1px; }
+.pw-current { width: 22px; height: 22px; border: 2px solid #2d49c7; margin-right: 6px; align-self: center; }
+
+/* ===== MENÚ "CUSTOMIZE" + TEXTO LADO A LADO ===== */
+.dmc-menu-wrap { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px; max-width: 100%; margin: 10px 0 2px; }
+.dmc-menu { flex: 0 0 220px; display: flex; flex-direction: column; gap: 1px; }
+.dmc-side { flex: 1 1 220px; min-width: 0; }
+
+/* ===== COMENTARIOS (barra derecha, misma estética DMC) ===== */
+.dmc-comments {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #050812;
+    border: 2px solid #0e1a52;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(0,0,0,.5);
+}
+.dmc-comments-bar {
+    background: linear-gradient(135deg,#0b164f,#040a26);
+    border-bottom: 2px solid #1b2f8c;
+    padding: 8px 12px;
+    text-align: center;
+    font-family: 'Cinzel Decorative','Cinzel',serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #c9d4ff;
+}
+.dmc-comments-list {
+    max-height: 180px;
+    overflow-y: auto;
+    padding: 10px 12px;
+    font-family: 'Cinzel',serif;
+    font-size: 11px;
+    line-height: 1.55;
+    color: #dfe4ff;
+    overflow-wrap: anywhere;
+}
+.dmc-comments-list .c-item { margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px dashed #1b2f8c; }
+.dmc-comments-list .c-item:last-child { margin-bottom: 0; border-bottom: none; }
+.dmc-comments-list .c-name { color: #4a6cff; font-weight: 700; margin-right: 4px; }
+.dmc-comments-form { display: flex; flex-direction: column; gap: 5px; padding: 8px; background: #0e1a52; border-top: 1px solid #1b2f8c; }
+.dmc-comments-form input {
+    width: 100%; min-width: 0; background: #050812; border: 1px solid #1b2f8c; border-radius: 2px;
+    color: #dfe4ff; font-family: 'Cinzel',serif; font-size: 10px; padding: 6px 8px;
+}
+.dmc-comments-form input::placeholder { color: #5a6bb0; }
+.dmc-comments-form button {
+    background: #13227a; border: 1px solid #2d49c7; border-radius: 2px; color: #e4e9ff;
+    font-family: 'Cinzel',serif; font-size: 10px; font-weight: 700; letter-spacing: .5px;
+    text-transform: uppercase; padding: 6px 12px; cursor: pointer;
+}
+.dmc-comments-form button:hover { background: #2d49c7; }
+.dmc-comments-list .c-del { float: right; background: none; border: none; color: #5a6bb0; font-size: 12px; line-height: 1; padding: 0 0 0 8px; }
+.dmc-comments-list .c-del:hover { color: #ff6b8a; }
+.dmc-comments-list .c-empty { color: #5a6bb0; font-style: italic; }
+.dmc-menu-item {
+    position: relative;
+    background: linear-gradient(90deg, rgba(120,150,255,.55) 0%, rgba(74,108,255,.28) 35%, rgba(14,26,82,.55) 70%, transparent 100%);
+    border: none; border-top: 1px solid rgba(146,166,255,.35); border-bottom: 1px solid rgba(0,0,0,.5);
+    color: #9fadd9; font-family: 'Cinzel',serif; font-style: italic; font-weight: 700; letter-spacing: .5px; text-align: left;
+    padding: 3px 0 3px 14px; cursor: pointer; clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+    transition: all .15s ease; font-size: 10px; text-transform: uppercase; text-shadow: 0 1px 0 #000;
+}
+.dmc-menu-item:hover, .dmc-menu-item.active {
+    color: #f2f5ff; font-size: 14px; padding-top: 2px; padding-bottom: 2px;
+    text-shadow: 0 1px 1px #000, 0 0 10px rgba(146,166,255,.9);
+    background: linear-gradient(90deg, rgba(170,190,255,.75) 0%, rgba(74,108,255,.45) 35%, rgba(14,26,82,.6) 70%, transparent 100%);
+}
+.dmc-desc { font-family: 'Cinzel',serif; font-size: 9px; letter-spacing: .5px; color: #6a76ad; margin: 2px 0 8px; min-height: 12px; }
+.dmc-panel {
+    position: relative; height: 230px; overflow-y: scroll; background: rgba(5,8,18,.92);
+    border: 2px solid #1b2f8c; border-radius: 0; padding: 16px 18px;
+    box-shadow: inset 0 0 0 2px #050812, inset 0 0 0 3px #0e1a52, 0 6px 14px rgba(0,0,0,.5);
+    font-family: 'Cinzel',serif; font-size: 11px; line-height: 1.6; letter-spacing: .3px; color: #dfe4ff;
+}
+.dmc-panel::before, .dmc-panel::after { content: '✦'; position: absolute; color: #4a6cff; font-size: 11px; }
+.dmc-panel::before { top: 6px; left: 8px; }
+.dmc-panel::after { bottom: 6px; right: 8px; }
+@media only screen and (max-width: 600px) {
+    .dmc-menu-wrap { flex-direction: column; gap: 14px; }
+    .dmc-menu { flex-basis: auto; width: 100%; }
+}
+
+/* ===== CONSOLA PSP REAL (al final del blog) ===== */
+.psp-wrap {
+    max-width: 560px;
+    margin: 0 auto 6px;
+    text-align: center;
+}
+.psp-wrap h3 {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #9fadd9;
+    margin: 0 0 8px;
+}
+.psp-real {
+    position: relative;
+    width: 100%;
+    /* se recorta el margen transparente de arriba de la imagen (era puro
+       espacio vacío) dejando solo desde la consola hacia abajo */
+    aspect-ratio: 632 / 518;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.psp-frame {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center bottom;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+/* pantalla: calzada exacta al visor (ya no se extiende por toda la carcasa) */
+.psp-real-screen {
+    position: absolute;
+    z-index: 1;
+    left: 31.4%;
+    top: 3.9%;
+    width: 48.5%;
+    height: 28.6%;
+    overflow: hidden;
+    background: #000;
+}
+.psp-real-screen img,
+.psp-real-screen iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: 0;
+}
+/* zonas clickeables invisibles, del tamaño real de las flechas del D-pad (izq/der) */
+.psp-dpad {
+    position: absolute;
+    z-index: 3;
+    width: 5.4%;
+    height: 6.6%;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background .12s ease;
+}
+.psp-dpad-left  { left: 18.3%; top: 14.7%; }
+.psp-dpad-right { left: 27.2%; top: 14.7%; }
+.psp-dpad:hover,
+.psp-dpad:focus-visible {
+    background: rgba(74,108,255,.28);
+    box-shadow: 0 0 10px rgba(74,108,255,.6);
+}
+.psp-dpad:active { background: rgba(74,108,255,.5); }
+
+/* ===== LLUVIA DE ESPADAS (fondo en todo el sitio) ===== */
+#swordRain {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 5;
+}
+#swordRain img {
+    position: absolute;
+    top: -15%;
+    opacity: .55;
+    filter: drop-shadow(0 0 6px rgba(74,108,255,.5));
+    animation-name: sword-fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+@keyframes sword-fall {
+    from { transform: translateY(-20vh) rotate(var(--sr-rot, 8deg)); }
+    to   { transform: translateY(120vh) rotate(var(--sr-rot, 8deg)); }
+}
+
+/* ===== CONTADOR DE TIEMPO (estética DMC, fijo arriba a la derecha) ===== */
+.dmc-timer {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    z-index: 9999;
+    background: rgba(5,8,18,.88);
+    border: 1px solid #1b2f8c;
+    border-radius: 4px;
+    padding: 12px 18px;
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(0,0,0,.5), 0 0 12px rgba(74,108,255,.25);
+    pointer-events: none;
+}
+.dmc-timer-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #6a76ad;
+    margin-bottom: 4px;
+}
+.dmc-timer-clock {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #c9d4ff;
+    text-shadow: 0 0 8px rgba(74,108,255,.8);
+}
+@media only screen and (max-width: 600px) {
+    .dmc-timer { top: 8px; right: 8px; padding: 8px 12px; }
+    .dmc-timer-clock { font-size: 16px; }
+    .dmc-timer-label { font-size: 8px; }
+}
+
+/* ===== BARRA DE SCROLL ESTILO NAVEGADOR ANTIGUO (Win98) ===== */
+.dmc-panel::-webkit-scrollbar,
+.dmc-comments-list::-webkit-scrollbar { width: 16px; height: 16px; }
+.dmc-panel::-webkit-scrollbar-track,
+.dmc-comments-list::-webkit-scrollbar-track {
+    background-color: #0b164f;
+    background-image: conic-gradient(#13227a 25%, #0b164f 0 50%, #13227a 0 75%, #0b164f 0);
+    background-size: 2px 2px;
+}
+.dmc-panel::-webkit-scrollbar-thumb,
+.dmc-comments-list::-webkit-scrollbar-thumb {
+    background-color: #2d49c7; border-radius: 0;
+    border: 2px solid; border-color: #92a6ff #040a26 #040a26 #92a6ff;
+}
+.dmc-panel::-webkit-scrollbar-button:single-button,
+.dmc-comments-list::-webkit-scrollbar-button:single-button {
+    display: block; width: 16px; height: 16px; border-radius: 0;
+    background-color: #2d49c7; background-repeat: no-repeat; background-position: center; background-size: 8px 8px;
+    border: 2px solid; border-color: #92a6ff #040a26 #040a26 #92a6ff;
+}
+.dmc-panel::-webkit-scrollbar-button:single-button:active,
+.dmc-comments-list::-webkit-scrollbar-button:single-button:active { border-color: #040a26 #92a6ff #92a6ff #040a26; }
+.dmc-panel::-webkit-scrollbar-button:single-button:vertical:decrement,
+.dmc-comments-list::-webkit-scrollbar-button:single-button:vertical:decrement {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><path d='M0 6L4 2L8 6Z' fill='%23e4e9ff'/></svg>");
+}
+.dmc-panel::-webkit-scrollbar-button:single-button:vertical:increment,
+.dmc-comments-list::-webkit-scrollbar-button:single-button:vertical:increment {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><path d='M0 2L4 6L8 2Z' fill='%23e4e9ff'/></svg>");
+}
+.dmc-panel::-webkit-scrollbar-corner,
+.dmc-comments-list::-webkit-scrollbar-corner { background: #2d49c7; }
+/* Firefox no soporta lo de arriba: version simple */
+@supports not selector(::-webkit-scrollbar) {
+    .dmc-panel, .dmc-comments-list { scrollbar-color: #2d49c7 #0b164f; }
+}
+
+/* ===== FILA DE BLINKIES (delgada, marco azul + encaje, estilo DMC3 viejo) ===== */
+.blinkie-bar {
+    margin: 8px 0 0;
+    padding: 3px;
+    border: 2px solid; border-color: #92a6ff #040a26 #040a26 #92a6ff;
+    border-radius: 0;
+    background: linear-gradient(180deg, #2d49c7, #13227a);
+    box-shadow: 0 0 0 1px #0b164f, 0 4px 12px rgba(0,0,0,.55), 0 0 10px rgba(74,108,255,.25);
+}
+.blinkie-inner {
+    position: relative; overflow: hidden;
+    background: linear-gradient(180deg, #02030c, #050812 50%, #02030c);
+    border: 2px solid; border-color: #040a26 #92a6ff #92a6ff #040a26;
+    border-radius: 0;
+    padding: 11px 0;
+    box-shadow: inset 0 0 14px rgba(0,0,0,.9);
+}
+/* bordes que se desvanecen a oscuro + líneas de pantalla vieja (CRT) */
+.blinkie-inner::before {
+    content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    background:
+        linear-gradient(90deg, #02030c 0%, rgba(2,3,12,0) 9%, rgba(2,3,12,0) 91%, #02030c 100%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px);
+}
+.blinkie-lace {
+    position: absolute; left: 0; right: 0; height: 10px; z-index: 2; pointer-events: none;
+    background-image: url('https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/patronvergilSIIII.png?raw=true');
+    background-repeat: repeat-x; background-size: auto 100%; background-position: left center;
+    opacity: .9;
+}
+.blinkie-lace.top { top: 0; }
+.blinkie-lace.bottom { bottom: 0; transform: scaleY(-1); }
+
+.blinkie-track { display: flex; align-items: center; width: max-content; will-change: transform; }
+.blinkie-track.ready { animation: blinkie-scroll var(--dur, 30s) linear infinite; }
+.blinkie-bar:hover .blinkie-track.ready { animation-play-state: paused; }
+
+/* cada blinkie ocupa SOLO su propio ancho (así ya no se sobreponen) */
+.blinkie-track > * { flex: none; }
+.blinkie-ph {
+    display: flex; align-items: center;
+    width: auto; height: auto; border: 0;
+    margin-right: 10px;
+}
+/* rombito separador entre blinkies */
+.blinkie-ph::after {
+    content: '✦'; margin-left: 10px;
+    font-family: 'Cinzel', serif; font-size: 9px; color: #2d49c7;
+    text-shadow: 0 0 6px rgba(74,108,255,.8);
+}
+.blinkie-track img {
+    display: block; height: 28px; width: auto; max-width: none;
+    filter: grayscale(1) contrast(1.1) brightness(.8);
+    transition: filter .35s ease;
+}
+/* al pasar el cursor: pausa (arriba) + color */
+.blinkie-bar:hover .blinkie-track img {
+    filter: grayscale(0) contrast(1) brightness(1);
+}
+@keyframes blinkie-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .blinkie-track.ready { animation: none; } }
+</style>
+</head>
+
+<body>
+<!-- lluvia de espadas, se arma sola con JS -->
+<div id="swordRain"></div>
+
+<!-- contador de tiempo en el sitio -->
+<div class="dmc-timer">
+    <div class="dmc-timer-label">✦ tiempo aquí ✦</div>
+    <div class="dmc-timer-clock" id="dmcTimerClock">00:00:00</div>
+</div>
+
+<br><br><br>
+<div id="container">
+    <div id="headerArea">
+        
+        <hr>
+        <!-- ===== TÍTULO ESTILO DMC ===== -->
+        <div id="dmcTitle">
+            <div class="dt-main">
+                <h1 class="dt-name">Toni Morrison's Space</h1>
+                <div class="dt-sub">Beloved</div>
+            </div>
+            <img class="dt-emblem" src="https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/dmctitlething.png?raw=true" alt="">
+        </div>
+        <br>
+        <hr>
+        <nav class="torn-nav">
+            <div class="torn-strip">
+                <a href="#" class="nav-item"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/home2design.png?raw=true" alt="Home"><span>Home</span></a>
+                <a href="#" class="nav-item"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/homedesing.png?raw=true" alt="Entrada 1"><span>Entrada 1</span></a>
+                
+                <a href="#" class="nav-item"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/vdesign1.png?raw=true" alt="Entrada 2"><span>Entrada 2</span></a>
+                <a href="#" class="nav-item"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/vdesing2.png?raw=true" alt="Entrada 3"><span>Entrada 3</span></a>
+                <a href="#" class="nav-item"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/vdesign3.png?raw=true" alt="Entrada 4"><span>Entrada 4</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== FILA DE BLINKIES ===== -->
+        <div class="blinkie-bar">
+            <div class="blinkie-inner">
+                <span class="blinkie-lace top"></span>
+                <span class="blinkie-lace bottom"></span>
+                <div class="blinkie-track" id="blinkieTrack">
+                    <!-- ===== PON AQUÍ TUS BLINKIES =====
+                         Con link:  <span class="blinkie-ph"><a href="https://link-del-sitio.com" target="_blank"><img src="URL_DE_TU_BLINKIE.gif" alt=""></a></span>
+                         Sin link:  <span class="blinkie-ph"><img src="URL_DE_TU_BLINKIE.gif" alt=""></span> -->
+                    <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/1.gif?raw=true" alt=""></span>
+                    <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/2.gif?raw=true" alt=""></span>
+                    <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/3.gif?raw=true" alt=""></span>
+                    <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/4.gif?raw=true" alt=""></span>
+                    <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/5.gif?raw=true" alt=""></span>
+                    <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/6.gif?raw=true" alt=""></span>
+                    <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/7.gif?raw=true" alt=""></span>
+                    <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/8.gif?raw=true" alt=""></span>
+                    <!-- ===== FIN DE TUS BLINKIES ===== -->
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <div id="flex">
+        <aside id="leftSidebar" style="margin-right: 10px;">
+            <h2>Etiquetas / tags</h2>
+            <div class="box"><p>Aca poner las tags explicacion en moodle</p></div>
+            <br><br>
+            <div class="quote-window">
+                <div class="qw-titlebar">
+                    <span class="qw-star">✦</span>
+                    <span class="qw-title">Frases.txt</span>
+                    <span class="qw-dots"><span></span><span></span></span>
+                </div>
+                <div class="qw-body">
+                    <span class="qw-tag">~ Beloved</span>
+                    <span class="qw-sticker">⚔︎</span>
+                    <p class="qw-text" id="qwText">...</p>
+                    <hr class="qw-divider"/>
+                    <div class="qw-footer">
+                        <span class="qw-count" id="qwCount">▶ 1/6</span>
+                        <button class="qw-next" id="qwNext">[ Siguiente ]</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="squish-cat">
+                <img draggable="false" src="https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/vergilpleuche3.png?raw=true" alt="gato amasable" />
+            </div>
+            <div class="paint-window">
+                <div class="pw-titlebar">☠︎︎ untitled - Paint <span class="pw-controls"><span>_</span><span>▢</span><span>✕</span></span></div>
+                <div class="pw-menubar">File Edit View <a id="pwClear">Clear</a></div>
+                <canvas id="pwCanvas" width="260" height="170"></canvas>
+                <div class="pw-palette" id="pwPalette"></div>
+            </div>
+            <br><br>
+            <center><img src="https://i.pinimg.com/736x/0e/3c/45/0e3c45ec0f9d202e2b30cf872e42fb07.jpg" width="200" height="200"></center>
+        </aside>
+
+        <main>
+            <div id="spotify-wrap">
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1qo5GNEvRim4jsJP4yBRck?utm_source=generator&amp;theme=0&amp;si=bd85337a9d8d41f7" width="80%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <img id="spotify-extra-img" alt="">
+            </div>
+
+            <!-- Menú a la izquierda, texto a la derecha -->
+            <div class="dmc-menu-wrap">
+                <div class="dmc-menu" id="dmcMenu">
+                    <button class="dmc-menu-item active" data-idx="0">asdas</button>
+                    <button class="dmc-menu-item" data-idx="1">Info. Beloved</button>
+                    <button class="dmc-menu-item" data-idx="2">Conntexto de </button>
+                    <button class="dmc-menu-item" data-idx="3">CRÉDITOS</button>
+                    <button class="dmc-menu-item" data-idx="4">LINKS</button>
+                    <button class="dmc-menu-item" data-idx="5">GUESTBOOK</button>
+                </div>
+                <div class="dmc-side">
+                    <div class="dmc-desc" id="dmcDesc">Quién escribe este blog.</div>
+                    <div class="dmc-panel" id="dmcPanel"></div>
+                </div>
+            </div>
+            <br><br><br>
+            <div class="psp-wrap">
+                <h3>✣ usá las flechas del control ✣</h3>
+                <div class="psp-real" id="pspReal">
+                    <img class="psp-frame" src="https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/ahorasiestaSIIII.png?raw=true" alt="PSP">
+                    <div class="psp-real-screen" id="pspScreen"></div>
+                    <button class="psp-dpad psp-dpad-left" id="pspPrev" aria-label="Anterior"></button>
+                    <button class="psp-dpad psp-dpad-right" id="pspNext" aria-label="Siguiente"></button>
+                </div>
+            </div>
+
+        </main>
+
+        <aside id="rightSidebar" style="margin-left: 10px;">
+            <br>
+            <center><img src="https://i.pinimg.com/736x/7a/5e/b0/7a5eb0f4b3b8805a672b93ab01a528ec.jpg" width="200" height="100"></center>
+            <br><br>
+            <div id="mp">
+                <div class="screen">
+                    <img class="cover" alt="Portada">
+                    <div class="title"></div>
+                    <div class="bar"><div class="fill"></div></div>
+                    <div class="time">0:00 / 0:00</div>
+                </div>
+                <div class="wheel">
+                    <button class="prev" aria-label="Anterior">◀◀</button>
+                    <button class="play" aria-label="Reproducir o pausar">▶</button>
+                    <button class="next" aria-label="Siguiente">▶▶</button>
+                </div>
+                <ul></ul>
+                <audio></audio>
+            </div>
+            <br><br>
+            <!-- ===== COMENTARIOS ===== -->
+            <div class="dmc-comments">
+                <div class="dmc-comments-bar">✦ comentarios ✦</div>
+                <div class="dmc-comments-list" id="dmcCommentsList"></div>
+                <form class="dmc-comments-form" id="dmcCommentsForm">
+                    <input type="text" id="dmcCommentName" placeholder="nombre" maxlength="20" required>
+                    <input type="text" id="dmcCommentText" placeholder="tu comentario..." maxlength="200" required>
+                    <button type="submit">✦</button>
+                </form>
+            </div>
+            <br><br>
+            <img src="https://i.pinimg.com/736x/9c/3c/47/9c3c47e951f7a222f14d6709cb2d392f.jpg" width="220" height="150">
+            <br><br><br><br>
+            <div class="squish-cat">
+                <img draggable="false" src="https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/vdmcpeliche.png?raw=true" alt="gato amasable" />
+            </div>
+        </aside>
+    </div>
+    <br>
+    <footer> </footer>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+<script>
+// ===== REPRODUCTOR MP3 =====
+(function () {
+    const canciones = [
+        { titulo: "Spelling - Litte Deer", src: "https://github.com/axxukaa/imagenes-borrador/blob/666f57613cc0badf0ca3887affeee4cfa9a4b991/audios/SPELLLING%20-%20Little%20Deer%20(Official%20Audio).mp3?raw=true", portada: "https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/speeling.webp?raw=true" },
+        { titulo: "Laufey – Let You Break My Heart Again", src: "https://github.com/axxukaa/imagenes-borrador/blob/666f57613cc0badf0ca3887affeee4cfa9a4b991/audios/Let%20You%20Break%20My%20Heart%20Again%20-%20Laufey%20%26%20Philharmonia%20Orchestra%20(Official%20Audio).mp3?raw=true", portada: "https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/04b27e325c14a6fc629eebb553942a45.1000x563x1-1821120567.jpg?raw=true" },
+        { titulo: "Ichiko Aoba - Asleep Among Endives (アンディーヴと眠って)", src: "https://github.com/axxukaa/imagenes-borrador/blob/2d086a89f175f399c79ad43abb95d69c333acc32/audios/Ichiko%20Aoba%20-%20Asleep%20Among%20Endives%20(%E3%82%A2%E3%83%B3%E3%83%87%E3%82%A3%E3%83%BC%E3%83%B4%E3%81%A8%E7%9C%A0%E3%81%A3%E3%81%A6).mp3?raw=true", portada: "https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/81cd79eae9ad99a749556e70b770d2a5.1000x1000x1-972656159.jpg?raw=true" }
+    ];
+    const $ = s => document.querySelector('#mp ' + s);
+    const audio = $('audio'), cover = $('.cover'), title = $('.title'), fill = $('.fill'),
+          bar = $('.bar'), time = $('.time'), play = $('.play'), list = $('ul');
+    let i = 0;
+    const fmt = t => isFinite(t) ? Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0') : '0:00';
+
+    function cargar(n, reproducir) {
+        i = (n + canciones.length) % canciones.length;
+        const c = canciones[i];
+        const ruta = r => r.startsWith('http') ? r : encodeURI(r);
+        audio.src = ruta(c.src);
+        if (c.portada) { cover.src = ruta(c.portada); cover.style.visibility = 'visible'; }
+        else { cover.style.visibility = 'hidden'; }
+        title.textContent = c.titulo;
+        title.title = c.titulo;
+        list.querySelectorAll('li.song').forEach((li, k) => li.classList.toggle('on', k === i));
+        if (reproducir) audio.play().catch(() => {});
+    }
+
+    const VISIBLES = 2;
+    list.classList.add('cerrada');
+    canciones.forEach((c, k) => {
+        const li = document.createElement('li');
+        li.className = 'song' + (k >= VISIBLES ? ' extra' : '');
+        li.textContent = c.titulo;
+        li.onclick = () => cargar(k, true);
+        list.appendChild(li);
+    });
+    if (canciones.length > VISIBLES) {
+        const mas = document.createElement('li');
+        mas.className = 'mas';
+        const texto = () => list.classList.contains('cerrada') ? '▼ ver ' + (canciones.length - VISIBLES) + ' más' : '▲ ocultar';
+        mas.textContent = texto();
+        mas.onclick = () => { list.classList.toggle('cerrada'); mas.textContent = texto(); };
+        list.appendChild(mas);
+    }
+
+    play.onclick = () => audio.paused ? audio.play() : audio.pause();
+    $('.prev').onclick = () => cargar(i - 1, true);
+    $('.next').onclick = () => cargar(i + 1, true);
+    audio.onplay = () => play.textContent = '❚❚';
+    audio.onpause = () => play.textContent = '▶';
+    audio.onended = () => cargar(i + 1, true);
+    audio.ontimeupdate = () => {
+        fill.style.width = (audio.currentTime / audio.duration * 100 || 0) + '%';
+        time.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+    };
+    audio.onloadedmetadata = audio.ontimeupdate;
+    bar.onclick = e => {
+        const r = bar.getBoundingClientRect();
+        audio.currentTime = (e.clientX - r.left) / r.width * audio.duration;
+    };
+    cargar(0, false);
+})();
+
+// ===== GATOS AMASABLES =====
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".squish-cat").forEach(function (wrap) {
+        const cat = wrap.querySelector("img");
+        if (!cat) return;
+        let pressed = false;
+        function squish(e) {
+            if (pressed) { cat.style.transform = "scale(1.25, 0.75)"; return; }
+            const r = wrap.getBoundingClientRect();
+            const y = (e.clientY - r.top) / r.height;
+            const dist = Math.min(Math.abs(y - 0.5) * 2, 1);
+            cat.style.transform = `scale(${1 + dist * 0.15}, ${1 - dist * 0.15})`;
+        }
+        function reset() { pressed = false; wrap.classList.remove("pressed"); cat.style.transform = "scale(1, 1)"; }
+        wrap.addEventListener("pointermove", squish);
+        wrap.addEventListener("pointerdown", function (e) { pressed = true; wrap.classList.add("pressed"); squish(e); });
+        wrap.addEventListener("pointerup", reset);
+        wrap.addEventListener("pointerleave", reset);
+        wrap.addEventListener("pointercancel", reset);
+    });
+});
+
+// ===== SPOTIFY: imagen según la canción que suena =====
+(function () {
+    // clic derecho en la canción en Spotify > Compartir > Copiar URI de Spotify
+    const imagenesPorCancion = {
+        'spotify:track:0FcS0Cpz3tK1DLXIzr6iL2': 'https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/guitarra.gif?raw=true'
+        // 'spotify:track:otroURI': 'otra-imagen.jpg',
+    };
+    const imgEl = document.getElementById('spotify-extra-img');
+    let uriActual = null;
+    window.addEventListener('message', (event) => {
+        if (event.origin !== 'https://open.spotify.com') return;
+        const uri = event.data?.payload?.playingURI || event.data?.playingURI;
+        if (!uri || uri === uriActual) return;
+        uriActual = uri;
+        if (imagenesPorCancion[uri]) { imgEl.src = imagenesPorCancion[uri]; imgEl.style.display = 'block'; }
+        else { imgEl.style.display = 'none'; }
+    });
+})();
+
+// ===== Caja de diálogo: ciclo de frases =====
+(function () {
+    const frases = [   // PON AQUÍ TUS FRASES
+        "«Liberarse era una cosa; reclamar la propiedad de ese ser liberado era otra muy distinta.» - Narrador",
+        "«Cualquier cosa muerta que regresa a la vida duele.» - Amy Denver",
+        "«El amor es o no es. Un amor a medias no es amor en absoluto.» - Sethe",
+        "«Para Sethe, el futuro era una cuestión de mantener a borde el pasado.» - Narrador",
+       "«Me dejó. Era mi cara y se fue.» - Beloved",
+       "«Algún día irás por el camino y verás algo ahí... Es un recuerdo que pertenece a alguien más.» - Sethe"
+    ];
+    let idx = 0;
+    const text = document.getElementById('qwText');
+    const count = document.getElementById('qwCount');
+    const btn = document.getElementById('qwNext');
+    if (btn) btn.onclick = () => {
+        idx = (idx + 1) % frases.length;
+        text.textContent = frases[idx];
+        count.textContent = '▶ ' + (idx + 1) + '/' + frases.length;
+    };
+})();
+
+// ===== Mini Paint =====
+(function () {
+    const canvas = document.getElementById('pwCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const palette = document.getElementById('pwPalette');
+    const colores = [
+        '#000000','#808080','#800000','#808000','#008000','#008080','#000080','#800080',
+        '#ffffff','#c0c0c0','#ff0000','#ffff00','#00ff00','#00ffff','#0000ff','#ff00ff',
+        '#13227a','#4a6cff','#0e1a52','#92a6ff'
+    ];
+    let color = '#000000';
+    const current = document.createElement('div');
+    current.className = 'pw-current';
+    current.style.background = color;
+    palette.appendChild(current);
+    colores.forEach((c, i) => {
+        const sw = document.createElement('div');
+        sw.className = 'pw-swatch' + (i === 0 ? ' active' : '');
+        sw.style.background = c;
+        sw.onclick = () => {
+            color = c;
+            current.style.background = c;
+            palette.querySelectorAll('.pw-swatch').forEach(s => s.classList.remove('active'));
+            sw.classList.add('active');
+        };
+        palette.appendChild(sw);
+    });
+    function resize() {
+        const ratio = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * ratio;
+        canvas.height = rect.height * ratio;
+        ctx.scale(ratio, ratio);
+    }
+    resize();
+    let drawing = false;
+    function pos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const p = e.touches ? e.touches[0] : e;
+        return { x: p.clientX - rect.left, y: p.clientY - rect.top };
+    }
+    function start(e) { drawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); e.preventDefault(); }
+    function move(e) {
+        if (!drawing) return;
+        const p = pos(e);
+        ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.strokeStyle = color;
+        ctx.lineTo(p.x, p.y); ctx.stroke();
+        e.preventDefault();
+    }
+    function stop() { drawing = false; }
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', stop);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', stop);
+    document.getElementById('pwClear').onclick = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
+})();
+
+// ===== Menú "Customize" estilo DMC3 =====
+(function () {
+    const menu = document.getElementById('dmcMenu');
+    if (!menu) return;
+    const descEl = document.getElementById('dmcDesc');
+    const panelEl = document.getElementById('dmcPanel');
+    // PON AQUÍ EL TEXTO DE CADA OPCIÓN
+    const opciones = [
+        { desc: "Hijo por que lees.", texto:"textotexttexttexttexttexttexttexttexttettexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext.texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" },
+        { desc: "nose nose.", texto: "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext." },
+        { desc: "lalalalakakkakkakaaaa.", texto: "pito corto." },
+        { desc: "Fdsadasd.", texto: "vergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergil" },
+        { desc: "blheeeee.", texto: "vergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergilvergil." },
+        { desc: "Dejá tu mensaje.", texto: "chamo tengo mas hambre" }
+    ];
+    function mostrar(idx) {
+        descEl.textContent = opciones[idx].desc;
+        panelEl.innerHTML = opciones[idx].texto;
+        panelEl.scrollTop = 0;
+    }
+    menu.querySelectorAll('.dmc-menu-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            menu.querySelectorAll('.dmc-menu-item').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            mostrar(parseInt(btn.dataset.idx, 10));
+        });
+    });
+    mostrar(0);
+})();
+
+// ===== Consola PSP (al final del blog) =====
+(function () {
+    const screen = document.getElementById('pspScreen');
+    if (!screen) return;
+
+    // ====== PON AQUÍ TUS IMÁGENES, GIFS O LINKS DE YOUTUBE (lo que sea, en cualquier orden) ======
+    const pspItems = [
+        "https://i.pinimg.com/originals/97/e0/4e/97e04ee0a1f0dc3f8df5a55a3d4654f4.gif",
+        "https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/guitarra.gif?raw=true",
+        "https://i.pinimg.com/originals/56/f0/63/56f063975196efea69f6ed2d926c62c6.gif",
+        "https://i.pinimg.com/1200x/3d/af/db/3dafdb88ce3f6ee0bcc1f59ec413267f.jpg",
+        "https://i.pinimg.com/originals/52/7f/64/527f6409ae1738c5e44bed08f3bcd379.gif",
+        "https://i.pinimg.com/originals/68/36/0f/68360fb71201ded3f92e77f0b83ce932.gif",
+        "https://i.pinimg.com/originals/3a/87/8d/3a878debc314776ac87266a43b04fa75.gif",
+        // "https://www.youtube.com/watch?v=XXXXXXXXXXX",   <- así agregás un video, con el link normal
+    ];
+    // ===============================================================================================
+
+    // saca el ID del video sea cual sea la forma del link (watch?v=, youtu.be, shorts, embed)
+    function idDeYoutube(url) {
+        const m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+        return m ? m[1] : null;
+    }
+
+    let idx = 0;
+    function mostrarPsp() {
+        screen.innerHTML = '';
+        const item = pspItems[idx];
+        const ytId = idDeYoutube(item);
+        if (ytId) {
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube.com/embed/' + ytId + '?rel=0';
+            iframe.title = 'video';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            screen.appendChild(iframe);
+        } else {
+            const img = document.createElement('img');
+            img.src = item;
+            img.alt = '';
+            screen.appendChild(img);
+        }
+    }
+    document.getElementById('pspPrev').onclick = () => {
+        idx = (idx - 1 + pspItems.length) % pspItems.length;
+        mostrarPsp();
+    };
+    document.getElementById('pspNext').onclick = () => {
+        idx = (idx + 1) % pspItems.length;
+        mostrarPsp();
+    };
+    mostrarPsp();
+})();
+
+// ===== Comentarios (se guardan solos y cada quien borra los suyos) =====
+(function () {
+    const form = document.getElementById('dmcCommentsForm');
+    if (!form) return;
+    const list = document.getElementById('dmcCommentsList');
+    const nameInput = document.getElementById('dmcCommentName');
+    const textInput = document.getElementById('dmcCommentText');
+
+    const KEY = 'dmcComments_v1';
+    const OWNER_KEY = 'dmcOwnerId_v1';
+    function leer(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+    function guardar(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+    // identificador anonimo de esta persona: solo puede borrar lo que ella escribio
+    let owner = leer(OWNER_KEY);
+    if (!owner) {
+        owner = 'u' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+        guardar(OWNER_KEY, owner);
+    }
+
+    let comentarios = [];
+    try {
+        comentarios = JSON.parse(leer(KEY) || '[]');
+        if (!Array.isArray(comentarios)) comentarios = [];
+    } catch (e) { comentarios = []; }
+
+    function persistir() { guardar(KEY, JSON.stringify(comentarios)); }
+
+    function render() {
+        list.textContent = '';
+        if (!comentarios.length) {
+            const vacio = document.createElement('div');
+            vacio.className = 'c-empty';
+            vacio.textContent = 'nadie ha comentado aún...';
+            list.appendChild(vacio);
+            return;
+        }
+        comentarios.forEach((c) => {
+            const item = document.createElement('div');
+            item.className = 'c-item';
+            if (c.owner === owner) {
+                const del = document.createElement('button');
+                del.type = 'button';
+                del.className = 'c-del';
+                del.title = 'Eliminar mi comentario';
+                del.setAttribute('aria-label', 'Eliminar mi comentario');
+                del.textContent = '✕';
+                del.addEventListener('click', () => {
+                    comentarios = comentarios.filter(x => x.id !== c.id);
+                    persistir();
+                    render();
+                });
+                item.appendChild(del);
+            }
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'c-name';
+            nameSpan.textContent = c.nombre + ':';
+            item.appendChild(nameSpan);
+            item.appendChild(document.createTextNode(c.texto));
+            list.appendChild(item);
+        });
+        list.scrollTop = list.scrollHeight;
+    }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nombre = nameInput.value.trim();
+        const texto = textInput.value.trim();
+        if (!nombre || !texto) return;
+        comentarios.push({
+            id: 'c' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+            owner: owner,
+            nombre: nombre,
+            texto: texto
+        });
+        persistir();
+        textInput.value = '';
+        render();
+    });
+
+    render();
+})();
+
+// ===== Lluvia de espadas (fondo en todo el sitio) =====
+(function () {
+    const cont = document.getElementById('swordRain');
+    if (!cont) return;
+
+    // CAMBIÁ ESTA URL SI LA ESPADA QUEDA EN OTRA RUTA DE TU REPO
+    const SWORD_SRC = "https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/summonedsword.png?raw=true";
+
+    const CANTIDAD = 16; // cuántas espadas caen a la vez
+    const COLUMNA = 100 / CANTIDAD; // franja de ancho que le toca a cada una
+    for (let n = 0; n < CANTIDAD; n++) {
+        const img = document.createElement('img');
+        img.src = SWORD_SRC;
+        img.alt = '';
+        const ancho = 60 + Math.random() * 70;           // entre 60px y 130px (más grandes)
+        // cada espada cae dentro de su propia franja del ancho total,
+        // así quedan repartidas en toda la pantalla y no amontonadas de un lado
+        const izquierda = n * COLUMNA + Math.random() * COLUMNA;
+        const duracion = 5 + Math.random() * 7;           // entre 5s y 12s
+        const retraso = -Math.random() * duracion;        // negativo: ya vienen cayendo al cargar
+        const rotacion = (Math.random() * 16 - 8).toFixed(1); // -8deg a 8deg
+        img.style.left = izquierda + '%';
+        img.style.width = ancho + 'px';
+        img.style.setProperty('--sr-rot', rotacion + 'deg');
+        img.style.animationDuration = duracion + 's';
+        img.style.animationDelay = retraso + 's';
+        img.style.opacity = (0.35 + Math.random() * 0.35).toFixed(2);
+        cont.appendChild(img);
+    }
+})();
+
+// ===== Contador de tiempo en el sitio =====
+(function () {
+    const clockEl = document.getElementById('dmcTimerClock');
+    if (!clockEl) return;
+    const inicio = Date.now();
+    function actualizar() {
+        const seg = Math.floor((Date.now() - inicio) / 1000);
+        const h = String(Math.floor(seg / 3600)).padStart(2, '0');
+        const m = String(Math.floor((seg % 3600) / 60)).padStart(2, '0');
+        const s = String(seg % 60).padStart(2, '0');
+        clockEl.textContent = h + ':' + m + ':' + s;
+    }
+    actualizar();
+    setInterval(actualizar, 1000);
+})();
+// ===== Fila de blinkies (se repite sola y se desplaza sin cortes) =====
+(function () {
+    const track = document.getElementById('blinkieTrack');
+    if (!track) return;
+    const VELOCIDAD = 100; // pixeles por segundo (sube el numero para que vaya mas rapido)
+    const originales = track.innerHTML;
+    let construyendo = false;
+
+    function esperarImagenes() {
+        return Promise.all(Array.from(track.querySelectorAll('img')).map(function (img) {
+            if (img.complete) return Promise.resolve();
+            return img.decode ? img.decode().catch(function () {}) : Promise.resolve();
+        }));
+    }
+
+    async function construir() {
+        if (construyendo) return;
+        construyendo = true;
+        track.classList.remove('ready');
+        track.innerHTML = originales;
+        await esperarImagenes();
+        const anchoSet = track.offsetWidth;
+        const visible = track.parentElement.clientWidth;
+        if (anchoSet > 0) {
+            const veces = Math.max(1, Math.ceil(visible / anchoSet));
+            track.innerHTML = originales.repeat(veces);
+            await esperarImagenes();
+            const anchoBloque = track.offsetWidth;
+            track.innerHTML = originales.repeat(veces * 2);
+            track.style.setProperty('--dur', (anchoBloque / VELOCIDAD) + 's');
+            track.classList.add('ready');
+        }
+        construyendo = false;
+    }
+
+    window.addEventListener('load', construir);
+    let t;
+    window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(construir, 250); });
+})();
+
+</script>
+</body>
+</html>
