@@ -5,218 +5,180 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Título de tu página</title>
 <link href="https://fonts.googleapis.com/css2?family=Almendra:wght@400;700&family=Almendra+Display&family=Kaushan+Script&family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
-/* ============================================================
-   VARIABLES: fondo y colores principales (azul DMC3)
-   ============================================================ */
 :root {
-  --fondo-img: url('https://i.pinimg.com/1200x/f2/d2/5e/f2d25eb63bcc3a7b47f7be579771f3c2.jpg'); /* fondo de la página */
+  --fondo-img: url('https://i.pinimg.com/1200x/f2/d2/5e/f2d25eb63bcc3a7b47f7be579771f3c2.jpg');
   --cursor: url('https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/cursorwii.png?raw=true') 6 2, auto;
-  --azul-claro: #92a6ff;
-  --azul: #4a6cff;
-  --azul-medio: #2d49c7;
-  --azul-borde: #1b2f8c;
-  --azul-oscuro: #0e1a52;
-  --negro: #050812;
-  --texto: #dfe4ff;
+  --azul-claro: #92a6ff; --azul: #4a6cff; --azul-medio: #2d49c7; --azul-borde: #1b2f8c;
+  --azul-oscuro: #0e1a52; --negro: #050812; --texto: #dfe4ff;
 }
 * { box-sizing: border-box; }
-
-/* ---------- BASE ---------- */
-body {
-  margin: 0;
-  font-family: 'Almendra', Georgia, serif;
-  font-size: 16px;
-  color: #fefefe;
-  background: #ffffff4b var(--fondo-img) no-repeat center center / cover fixed;
-  cursor: var(--cursor);
-}
+body { margin: 0; font-family: 'Almendra', Georgia, serif; font-size: 16px; color: #fefefe;
+  background: #ffffff4b var(--fondo-img) no-repeat center center / cover fixed; cursor: var(--cursor); }
 a, button { cursor: var(--cursor); }
 #container { max-width: 960px; margin: 0 auto; padding: 14px; }
-
-/* ---------- VENTANA ESTILO DMC (se usa en todas las cajas) ---------- */
-.ventana {
-  background: var(--negro);
-  border: 2px solid var(--azul-oscuro);
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 8px 18px rgba(0,0,0,.5);
-}
-.ventana-titulo {
-  background: linear-gradient(135deg, #0b164f, #040a26);
-  border-bottom: 2px solid var(--azul-borde);
-  padding: 7px 12px;
-  text-align: center;
-  font-family: 'Cinzel Decorative', 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #c9d4ff;
-}
-.ventana-cuerpo {
-  padding: 12px 14px;
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  line-height: 1.6;
-  color: var(--texto);
-  overflow-wrap: anywhere;
-}
-
-/* ---------- BANNER ---------- */
+.ventana { background: var(--negro); border: 2px solid var(--azul-oscuro); border-radius: 4px; overflow: hidden; box-shadow: 0 8px 18px rgba(0,0,0,.5); }
+.ventana-titulo { background: linear-gradient(135deg, #0b164f, #040a26); border-bottom: 2px solid var(--azul-borde);
+  padding: 7px 12px; text-align: center; font-family: 'Cinzel Decorative', 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 1.5px; text-transform: uppercase; color: #c9d4ff; }
+.ventana-cuerpo { padding: 12px 14px; font-family: 'Cinzel', serif; font-size: 12px; line-height: 1.6; color: var(--texto); overflow-wrap: anywhere; }
 #banner { border: 2px solid var(--azul-borde); box-shadow: 0 0 12px rgba(74,108,255,.35); }
 #banner img { width: 100%; display: block; }
-
-/* ---------- TÍTULO ESTILO DMC (logo azul con brillo) ---------- */
 #titulo { display: flex; align-items: center; justify-content: center; padding: 18px 10px 10px; }
-.dt-nombre, .dt-sub {
-  font-family: 'Kaushan Script', cursive; margin: 0; line-height: 1.1;
-  color: #000; paint-order: stroke fill; -webkit-text-stroke: 4px #4f86ff;
-  text-shadow: 0 0 6px rgba(60,120,255,.95), 0 0 16px rgba(30,80,255,.8), 0 0 34px rgba(20,60,230,.6);
-}
+.dt-nombre, .dt-sub { font-family: 'Kaushan Script', cursive; margin: 0; line-height: 1.1; color: #000; paint-order: stroke fill; -webkit-text-stroke: 4px #4f86ff;
+  text-shadow: 0 0 6px rgba(60,120,255,.95), 0 0 16px rgba(30,80,255,.8), 0 0 34px rgba(20,60,230,.6); }
 .dt-nombre { font-size: clamp(28px, 5vw, 56px); text-align: center; }
 .dt-sub { font-size: clamp(16px, 2.4vw, 26px); text-align: right; -webkit-text-stroke-width: 3px; }
 .dt-emblema { height: clamp(90px, 14vw, 150px); margin-left: -10px; }
-
-/* ---------- FILA PRINCIPAL: menú | contenido | panel ---------- */
 #fila { display: flex; gap: 8px; align-items: flex-start; }
-#menu    { width: 150px; flex-shrink: 0; }
-#centro  { flex: 1; min-width: 0; }
-#panel   { width: 170px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; }
-
-/* ---------- BOTONES DEL MENÚ (estilo "customize" de DMC3) ---------- */
+#menu { width: 150px; flex-shrink: 0; }
+#centro { flex: 1; min-width: 0; }
+#panel { width: 170px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; }
 .menu-seccion { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 1px; color: #6a76ad; margin: 4px 0; }
-.menu-item {
-  display: block; text-decoration: none; text-align: left;
+.menu-item { display: block; text-decoration: none; text-align: left;
   background: linear-gradient(90deg, rgba(120,150,255,.55) 0%, rgba(74,108,255,.28) 35%, rgba(14,26,82,.55) 70%, transparent 100%);
   border-top: 1px solid rgba(146,166,255,.35); border-bottom: 1px solid rgba(0,0,0,.5);
-  color: #9fadd9; font-family: 'Cinzel', serif; font-style: italic; font-weight: 700;
-  font-size: 10px; text-transform: uppercase; letter-spacing: .5px; text-shadow: 0 1px 0 #000;
-  padding: 7px 0 7px 14px; margin-bottom: 2px;
-  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
-  transition: all .15s ease;
-}
-.menu-item:hover, .menu-item.activo {
-  color: #f2f5ff; font-size: 12px;
-  text-shadow: 0 1px 1px #000, 0 0 10px rgba(146,166,255,.9);
-  background: linear-gradient(90deg, rgba(170,190,255,.75) 0%, rgba(74,108,255,.45) 35%, rgba(14,26,82,.6) 70%, transparent 100%);
-}
-
-/* ---------- CONTENIDO CENTRAL (con scroll estilo Win98) ---------- */
+  color: #9fadd9; font-family: 'Cinzel', serif; font-style: italic; font-weight: 700; font-size: 10px; text-transform: uppercase;
+  letter-spacing: .5px; text-shadow: 0 1px 0 #000; padding: 7px 0 7px 14px; margin-bottom: 2px;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); transition: all .15s ease; }
+.menu-item:hover, .menu-item.activo { color: #f2f5ff; font-size: 12px; text-shadow: 0 1px 1px #000, 0 0 10px rgba(146,166,255,.9);
+  background: linear-gradient(90deg, rgba(170,190,255,.75) 0%, rgba(74,108,255,.45) 35%, rgba(14,26,82,.6) 70%, transparent 100%); }
 .scroll { height: 330px; overflow-y: scroll; }
 .scroll::-webkit-scrollbar { width: 16px; }
 .scroll::-webkit-scrollbar-track { background: #0b164f; }
 .scroll::-webkit-scrollbar-thumb { background: var(--azul-medio); border: 2px solid; border-color: var(--azul-claro) #040a26 #040a26 var(--azul-claro); }
 .scroll::-webkit-scrollbar-button:single-button { display: block; width: 16px; height: 16px; background: var(--azul-medio); border: 2px solid; border-color: var(--azul-claro) #040a26 #040a26 var(--azul-claro); }
-.etiqueta { /* etiquetas tipo "BYF" / "DNI" / "AVISO" */
-  display: inline-block; background: #13227a; border: 1px solid var(--azul-medio); color: #e4e9ff;
-  font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px;
-}
-
-/* ---------- CHAT ---------- */
+.etiqueta { display: inline-block; background: #13227a; border: 1px solid var(--azul-medio); color: #e4e9ff; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
 #chat { margin-top: 8px; }
 #chat .ventana-cuerpo { min-height: 160px; }
-
-/* ---------- LLUVIA DE ESPADAS (decorativa, opcional) ---------- */
 #lluvia { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 5; }
 #lluvia img { position: absolute; top: -15%; animation: caer linear infinite; filter: drop-shadow(0 0 6px rgba(74,108,255,.5)); }
 @keyframes caer { from { transform: translateY(-20vh) rotate(var(--rot,8deg)); } to { transform: translateY(120vh) rotate(var(--rot,8deg)); } }
-
-/* ---------- FILA DE BLINKIES (marco azul + encaje, se desplaza sola) ---------- */
-.blinkie-bar {
-  margin: 0 0 6px; padding: 2px;
-  border: 2px solid; border-color: var(--azul-claro) #040a26 #040a26 var(--azul-claro);
-  background: linear-gradient(180deg, var(--azul-medio), #13227a);
-  box-shadow: 0 0 0 1px #0b164f, 0 4px 12px rgba(0,0,0,.55), 0 0 10px rgba(74,108,255,.25);
-}
-.blinkie-inner {
-  position: relative; overflow: hidden; padding: 6px 0;
-  background: linear-gradient(180deg, #02030c, var(--negro) 50%, #02030c);
-  border: 2px solid; border-color: #040a26 var(--azul-claro) var(--azul-claro) #040a26;
-  box-shadow: inset 0 0 14px rgba(0,0,0,.9);
-}
-/* bordes que se desvanecen + líneas de pantalla vieja (CRT) */
-.blinkie-inner::before {
-  content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none;
-  background:
-    linear-gradient(90deg, #02030c 0%, rgba(2,3,12,0) 9%, rgba(2,3,12,0) 91%, #02030c 100%),
-    repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px);
-}
-/* encaje decorativo arriba y abajo (cambia la URL por tu patrón) */
-.blinkie-lace {
-  position: absolute; left: 0; right: 0; height: 5px; z-index: 2; pointer-events: none; opacity: .9;
-  background: url('https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/patronvergilSIIII.png?raw=true') repeat-x left center / auto 100%;
-}
+.blinkie-bar { margin: 0 0 6px; padding: 2px; border: 2px solid; border-color: var(--azul-claro) #040a26 #040a26 var(--azul-claro);
+  background: linear-gradient(180deg, var(--azul-medio), #13227a); box-shadow: 0 0 0 1px #0b164f, 0 4px 12px rgba(0,0,0,.55), 0 0 10px rgba(74,108,255,.25); }
+.blinkie-inner { position: relative; overflow: hidden; padding: 6px 0; background: linear-gradient(180deg, #02030c, var(--negro) 50%, #02030c);
+  border: 2px solid; border-color: #040a26 var(--azul-claro) var(--azul-claro) #040a26; box-shadow: inset 0 0 14px rgba(0,0,0,.9); }
+.blinkie-inner::before { content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: linear-gradient(90deg, #02030c 0%, rgba(2,3,12,0) 9%, rgba(2,3,12,0) 91%, #02030c 100%), repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px); }
+.blinkie-lace { position: absolute; left: 0; right: 0; height: 5px; z-index: 2; pointer-events: none; opacity: .9;
+  background: url('https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/patronvergilSIIII.png?raw=true') repeat-x left center / auto 100%; }
 .blinkie-lace.top { top: 0; }
 .blinkie-lace.bottom { bottom: 0; transform: scaleY(-1); }
 .blinkie-track { display: flex; align-items: center; width: max-content; will-change: transform; }
 .blinkie-track.ready { animation: blinkie-scroll var(--dur, 30s) linear infinite; }
-.blinkie-bar:hover .blinkie-track.ready { animation-play-state: paused; } /* pausa al pasar el cursor */
+.blinkie-bar:hover .blinkie-track.ready { animation-play-state: paused; }
 .blinkie-ph { flex: none; display: flex; align-items: center; margin-right: 10px; }
-.blinkie-ph::after { content: '✦'; margin-left: 10px; font-size: 7px; color: var(--azul-medio); text-shadow: 0 0 6px rgba(74,108,255,.8); } /* rombito separador */
+.blinkie-ph::after { content: '✦'; margin-left: 10px; font-size: 7px; color: var(--azul-medio); text-shadow: 0 0 6px rgba(74,108,255,.8); }
 .blinkie-track img { display: block; height: 20px; width: auto; max-width: none; filter: grayscale(1) contrast(1.1) brightness(.8); transition: filter .35s ease; }
-.blinkie-bar:hover .blinkie-track img { filter: none; } /* a color al pasar el cursor */
+.blinkie-bar:hover .blinkie-track img { filter: none; }
 @keyframes blinkie-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .blinkie-track.ready { animation: none; } }
-
-/* ---------- MÓVIL: se apila todo ---------- */
 @media (max-width: 800px) {
   #fila { flex-wrap: wrap; }
   #menu, #panel { width: 100%; }
   #centro { order: -1; flex-basis: 100%; }
 }
+#panel { width: 160px; }
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&display=swap');
+
+.dmc-menu-item {
+    cursor: url('https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/cursorwii.png?raw=true') 6 2, pointer;
+}
+
+.dmc-menu-wrap { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px; max-width: 100%; margin: 10px 0 2px; }
+.dmc-menu { flex: 0 0 220px; display: flex; flex-direction: column; gap: 1px; }
+.dmc-side { flex: 1 1 220px; min-width: 0; }
+
+.dmc-menu-item {
+    position: relative;
+    background: linear-gradient(90deg, rgba(120,150,255,.55) 0%, rgba(74,108,255,.28) 35%, rgba(14,26,82,.55) 70%, transparent 100%);
+    border: none; border-top: 1px solid rgba(146,166,255,.35); border-bottom: 1px solid rgba(0,0,0,.5);
+    color: #9fadd9; font-family: 'Cinzel',serif; font-style: italic; font-weight: 700; letter-spacing: .5px; text-align: left;
+    padding: 3px 0 3px 14px; clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+    transition: all .15s ease; font-size: 10px; text-transform: uppercase; text-shadow: 0 1px 0 #000;
+}
+.dmc-menu-item:hover, .dmc-menu-item.active {
+    color: #f2f5ff; font-size: 14px; padding-top: 2px; padding-bottom: 2px;
+    text-shadow: 0 1px 1px #000, 0 0 10px rgba(146,166,255,.9);
+    background: linear-gradient(90deg, rgba(170,190,255,.75) 0%, rgba(74,108,255,.45) 35%, rgba(14,26,82,.6) 70%, transparent 100%);
+}
+
+.dmc-desc { font-family: 'Cinzel',serif; font-size: 9px; letter-spacing: .5px; color: #6a76ad; margin: 2px 0 8px; min-height: 12px; overflow-wrap: anywhere; }
+
+.dmc-panel {
+    position: relative; height: 230px; overflow-y: scroll; background: rgba(5,8,18,.92);
+    border: 2px solid #1b2f8c; border-radius: 0; padding: 16px 18px;
+    box-shadow: inset 0 0 0 2px #050812, inset 0 0 0 3px #0e1a52, 0 6px 14px rgba(0,0,0,.5);
+    font-family: 'Cinzel',serif; font-size: 11px; line-height: 1.7; letter-spacing: .3px; color: #dfe4ff;
+    overflow-wrap: anywhere; word-break: break-word; overflow-x: hidden;
+}
+.dmc-panel::before, .dmc-panel::after { content: '\2726'; position: absolute; color: #4a6cff; font-size: 11px; }
+.dmc-panel::before { top: 6px; left: 8px; }
+.dmc-panel::after { bottom: 6px; right: 8px; }
+
+/* IMÁGENES dentro del panel */
+.dmc-panel img { max-width: 100%; height: auto; display: block; margin: 0 auto 10px; }
+
+@media only screen and (max-width: 600px) {
+    .dmc-menu-wrap { flex-direction: column; gap: 14px; }
+    .dmc-menu { flex-basis: auto; width: 100%; }
+}
+
+/* Scroll estilo Win98 */
+.dmc-panel::-webkit-scrollbar { width: 16px; height: 16px; }
+.dmc-panel::-webkit-scrollbar-track {
+    background-color: #0b164f;
+    background-image: conic-gradient(#13227a 25%, #0b164f 0 50%, #13227a 0 75%, #0b164f 0);
+    background-size: 2px 2px;
+}
+.dmc-panel::-webkit-scrollbar-thumb {
+    background-color: #2d49c7; border-radius: 0;
+    border: 2px solid; border-color: #92a6ff #040a26 #040a26 #92a6ff;
+}
+.dmc-panel::-webkit-scrollbar-button:single-button {
+    display: block; width: 16px; height: 16px; border-radius: 0;
+    background-color: #2d49c7; background-repeat: no-repeat; background-position: center; background-size: 8px 8px;
+    border: 2px solid; border-color: #92a6ff #040a26 #040a26 #92a6ff;
+}
+.dmc-panel::-webkit-scrollbar-button:single-button:active { border-color: #040a26 #92a6ff #92a6ff #040a26; }
+.dmc-panel::-webkit-scrollbar-button:single-button:vertical:decrement {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><path d='M0 6L4 2L8 6Z' fill='%23e4e9ff'/></svg>");
+}
+.dmc-panel::-webkit-scrollbar-button:single-button:vertical:increment {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><path d='M0 2L4 6L8 2Z' fill='%23e4e9ff'/></svg>");
+}
+.dmc-panel::-webkit-scrollbar-corner { background: #2d49c7; }
+@supports not selector(::-webkit-scrollbar) {
+    .dmc-panel { scrollbar-color: #2d49c7 #0b164f; }
+}
 </style>
 </head>
-
 <body>
-<!-- Lluvia de espadas: se genera con el script del final. Borra este div y el script si no la quieres -->
 <div id="lluvia"></div>
-
 <div id="container">
-
-  <!-- ===================== BANNER =====================
-       Imagen grande de cabecera (Vergil/DMC). Cambia el src. -->
-  <div id="banner">
-    <img src="banner.png" alt="Banner">
-  </div>
-
-  <!-- ===================== TÍTULO DE LA PÁGINA =====================
-       Nombre grande + subtítulo + emblema a la derecha. -->
+  <img src="https://i.pinimg.com/1200x/16/40/51/164051b644e1aae6799c94448f8c1bd5.jpg" width="945" height="300">
   <div id="titulo">
     <div>
-      <h1 class="dt-nombre">Nombre de tu sitio</h1>
-      <div class="dt-sub">Subtítulo</div>
+      <h1 class="dt-nombre">Análisis, recursos, simbología</h1>
+      <div class="dt-sub">Beloved</div>
     </div>
     <img class="dt-emblema" src="https://github.com/axxukaa/imagenes-borrador/blob/main/imagenes/dmctitlething.png?raw=true" alt="">
   </div>
-
-  <!-- ===================== FILA DE BLINKIES =====================
-       Barra delgada que se desplaza sola. Pon tus blinkies dentro del "blinkieTrack".
-       Con link:  <span class="blinkie-ph"><a href="https://sitio.com" target="_blank"><img src="TU_BLINKIE.gif" alt=""></a></span>
-       Sin link:  <span class="blinkie-ph"><img src="TU_BLINKIE.gif" alt=""></span> -->
   <div class="blinkie-bar">
     <div class="blinkie-inner">
       <span class="blinkie-lace top"></span>
       <span class="blinkie-lace bottom"></span>
       <div class="blinkie-track" id="blinkieTrack">
-        <!-- ===== TUS BLINKIES ===== -->
         <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/1.gif?raw=true" alt=""></span>
         <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/2.gif?raw=true" alt=""></span>
         <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/3.gif?raw=true" alt=""></span>
         <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/4.gif?raw=true" alt=""></span>
         <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/5.gif?raw=true" alt=""></span>
         <span class="blinkie-ph"><img src="https://github.com/axxukaa/imagenes-borrador/blob/main/blinkies/6.gif?raw=true" alt=""></span>
-        <!-- ===== FIN DE TUS BLINKIES ===== -->
       </div>
     </div>
   </div>
-
-  <!-- ===================== FILA PRINCIPAL ===================== -->
   <div id="fila">
-
-    <!-- ========== IZQUIERDA: MENÚ ==========
-         Los href="#" son placeholders: cámbialos por tus archivos
-         (ej. href="entrada1.html"). La clase "activo" marca la página actual. -->
     <nav id="menu">
       <div class="menu-seccion">✦ MENÚ</div>
 
@@ -225,89 +187,80 @@ a, button { cursor: var(--cursor); }
 
       <!-- 4 entradas -->
       <a class="menu-item" href="https://axxukaa.github.io/imagenes-borrador/pagina/Entrada1.html">Entrada 1</a>
-      <a class="menu-item activo" href="">Entrada 2</a>
-      <a class="menu-item" href="#">Entrada 3</a>
-      <a class="menu-item" href="#">Entrada 4</a>
+      <a class="menu-item activo" href="https://axxukaa.github.io/imagenes-borrador/pagina/entrada2.html">Entrada 2</a>
+      <a class="menu-item" href="https://axxukaa.github.io/imagenes-borrador/pagina/entrada3.html">Entrada 3</a>
+      <a class="menu-item" href="https://axxukaa.github.io/imagenes-borrador/pagina/entrada4.html">Entrada 4</a>
 
       <!-- Botón 88x31 opcional -->
       <br>
-      <a href="#"><img src="boton-88x31.gif" alt="" width="88" height="31"></a>
+      <a href="#"><img src="https://i.pinimg.com/originals/61/bf/7a/61bf7acf51dd815e11e7bd254ed8e38f.gif"  width="150" height="150"></a>
     </nav>
-
-    <!-- ========== CENTRO: CONTENIDO PRINCIPAL ==========
-         Si el texto es largo, se desplaza dentro de la caja (clase "scroll"). -->
+    <aside id="panel">
+      <!-- Últimos posts -->
+      <div class="ventana">
+        <div class="ventana-titulo">✦ Aclaración ✦</div>
+        <div class="ventana-cuerpo" style="text-align:center;">
+          Revisa el glosario de "home".
+        </div>
+      </div>
+      <div class="ventana">
+        <div class="ventana-titulo">✦ Cicatriz ✦</div>
+        <div class="ventana-cuerpo" style="text-align:center;">
+          Sethe tenía una cicatriz la cual una chica blanca que la curó la compraró con un árbol de cerezo silvestre (Chokecherry tree).
+        </div>
+      </div>
+     
+    </aside>
     <main id="centro">
       <div class="ventana">
-        <div class="ventana-titulo">✦ Bienvenida.txt ✦</div>
+        <div class="ventana-titulo">✦ Entrada 2.txt ✦</div>
         <div class="ventana-cuerpo scroll">
-
-          <!-- Saludo -->
-          <p><b>¡Hola!</b></p>
-
-          <!-- Bienvenida: de qué trata la página -->
-          <p>Texto de bienvenida: qué es esta página y qué se puede encontrar aquí.</p>
-
-          <!-- Aviso / disclaimer: advertencias de contenido, compatibilidad móvil, etc. -->
-          <p><span class="etiqueta">Aviso</span> Escribe aquí tus advertencias.</p>
-
-          <!-- BYF: quién sí es bienvenido a interactuar -->
-          <p><span class="etiqueta">BYF</span> Quién es bienvenido/a.</p>
-
-          <!-- DNI: quién no debe interactuar -->
-          <p><span class="etiqueta">DNI</span> Quién no debe interactuar.</p>
-
-          <!-- Puedes añadir más párrafos o imágenes; la caja hace scroll sola -->
+          <b>TEMAS DE LA NOVELA:</b> los temas abarcados durante la novela Beloved son:
+<ul>
+  <li><b>Trauma y memoria:</b> el pasado que no se supera y que regresa a Sethe, esto se expresa en el <i>rememory</i> (revisar glosario en "Home").</li>
+  <li><b>La esclavitud y la deshumanización:</b> se trata a las personas como propiedad y se les niega una identidad como tal.</li>
+  <li><b>Maternidad:</b> el amor materno llevado a los extremos y la pregunta que nos genera: ¿puede un acto terrible, incluso matar a tu hijo, ser la mayor muestra de amor?</li>
+  <li><b>Identidad y nombre:</b> poseerse a sí mismo, el hecho de ponerse nombre y poder definir quién eres (esto también se refleja en Beloved).</li>
+  <li><b>Comunidad:</b> el apoyo, rechazo y envidia de la comunidad, que se ve en cómo la rechazan por el acto que cometió, pero al final, al escuchar a Denver pedir ayuda, acuden.</li>
+  <li><b>Libertad:</b> la libertad legal no equivale a una libertad psicológica, y Sethe nos lo demuestra durante la obra por los traumas de su pasado (esto también se puede ver en Paul D., Halle, Baby Suggs, entre otros).</li>
+</ul>
+<br>
+<b>RECURSOS ARTÍSTICOS:</b>
+<ul>
+  <li><b>Realismo mágico y/o lo sobrenatural:</b> representado con el fantasma de Beloved, que es algo real, no una metáfora.</li>
+  <li><b>Estructura no lineal y fragmentada:</b> los saltos temporales que van apareciendo como flashbacks.</li>
+  <li><b>Múltiples voces:</b> hay capítulos casi en monólogo interior, como flujo de conciencia.</li>
+  <li><b>Elipsis y silencio:</b> lo que más se teme, porque marca que algo terrible se va a decir; ese silencio de espera habla por sí solo.</li>
+  <li><b>Lenguaje poético mezclado con oralidad:</b> frases rítmicas y repeticiones que imitan (como era el objetivo de Toni Morrison) la tradición oral afroamericana.</li>
+  <li><b>Repetición:</b> frases e incluso imágenes que reflejan la obsesión y el trauma.</li>
+</ul>
         </div>
       </div>
     </main>
-
-    <!-- ========== DERECHA: PANEL LATERAL ========== -->
-    <aside id="panel">
-
-      <!-- Perfil: usuario, avatar, estado -->
-      <div class="ventana">
-        <div class="ventana-titulo">✦ Perfil ✦</div>
-        <div class="ventana-cuerpo" style="text-align:center;">
-          <!-- <img src="avatar.png" width="60" alt=""> -->
-          <div><b>TuUsuario</b></div>               <!-- nombre / nick -->
-          <div>visto hace X días</div>              <!-- última conexión -->
-          <div>Tu frase o estado</div>              <!-- mood -->
-        </div>
-      </div>
-
-      <!-- Última actualización del sitio -->
-      <div class="ventana">
-        <div class="ventana-titulo">✦ Última act. ✦</div>
-        <div class="ventana-cuerpo" style="text-align:center;">
-          01/01/2026 – Qué cambiaste en la web.
-        </div>
-      </div>
-
-      <!-- Últimos posts -->
-      <div class="ventana">
-        <div class="ventana-titulo">✦ Últimos posts ✦</div>
-        <div class="ventana-cuerpo" style="text-align:center;">
-          01/01/2026 – Título del último post.
-        </div>
-      </div>
-    </aside>
   </div>
-
-  <!-- ===================== CHAT / COMENTARIOS =====================
-       Pega aquí el código de embed de tu cbox (cbox.ws) o similar.
-       Si no quieres chat, borra todo este bloque. -->
   <div id="chat" class="ventana">
-    <div class="ventana-titulo">✦ Comentarios ✦</div>
+    <div class="ventana-titulo">✦ Greimas ✦</div>
     <div class="ventana-cuerpo">
-      <!-- PEGA AQUÍ EL CÓDIGO DEL CBOX -->
+      <div class="dmc-menu-wrap">
+    <div class="dmc-menu" id="dmcMenu">
+        <button class="dmc-menu-item active" data-idx="0">Sethe</button>
+        <button class="dmc-menu-item" data-idx="1">Beloved</button>
+        <button class="dmc-menu-item" data-idx="2">Denver</button>
+        <button class="dmc-menu-item" data-idx="3">Paul D</button>
+        <button class="dmc-menu-item" data-idx="4">Baby Suggs</button>
+        <button class="dmc-menu-item" data-idx="5">Schoolteacher</button>
+        <button class="dmc-menu-item" data-idx="6">124</button>
+    </div>
+    <div class="dmc-side">
+        <div class="dmc-desc" id="dmcDesc">Quién escribe este blog.</div>
+        <div class="dmc-panel" id="dmcPanel"></div>
+    </div>
+</div>
     </div>
   </div>
-
 </div>
-
 <script>
 // ===== Lluvia de espadas (decorativa) =====
-// Cambia SWORD_SRC por tu imagen; CANTIDAD = cuántas caen a la vez.
 (function () {
   const cont = document.getElementById('lluvia');
   if (!cont) return;
@@ -327,12 +280,11 @@ a, button { cursor: var(--cursor); }
   }
 })();
 
-// ===== Fila de blinkies: se repite sola y se desplaza sin cortes =====
-// VELOCIDAD = píxeles por segundo (súbelo para que vaya más rápido)
+// ===== Fila de blinkies (VELOCIDAD = píxeles por segundo) =====
 (function () {
   const track = document.getElementById('blinkieTrack');
   if (!track) return;
-  const VELOCIDAD = 100;
+  const VELOCIDAD = 70;
   const originales = track.innerHTML;
   let construyendo = false;
   const esperar = () => Promise.all(Array.from(track.querySelectorAll('img')).map(i =>
@@ -358,6 +310,50 @@ a, button { cursor: var(--cursor); }
   window.addEventListener('load', construir);
   let t;
   window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(construir, 250); });
+})();
+(function () {
+    const menu = document.getElementById('dmcMenu');
+    if (!menu) return;
+    const descEl = document.getElementById('dmcDesc');
+    const panelEl = document.getElementById('dmcPanel');
+
+    const opciones = [
+        { desc: "Greimas", texto: `
+            <img src="https://github.com/axxukaa/imagenes-borrador/blob/main/greimas/sethe.png?raw=true" alt="">
+        ` },
+        { desc: "Greimas", texto: `
+            <img src="https://github.com/axxukaa/imagenes-borrador/blob/main/greimas/beloved.png?raw=true" alt="">
+        ` },
+        { desc: "Greimas", texto: `
+            <img src="https://github.com/axxukaa/imagenes-borrador/blob/main/greimas/denver.png?raw=true" alt="">
+        ` },
+        { desc: "Greimas", texto: `
+            <img src="https://github.com/axxukaa/imagenes-borrador/blob/main/greimas/paul%20d.png?raw=true" alt="">
+        ` },
+        { desc: "Greimas", texto: `
+            <img src="https://github.com/axxukaa/imagenes-borrador/blob/main/greimas/baby%20suggs.png?raw=true" alt="">
+        ` },
+        { desc: "Greimas", texto: `
+            <img src="https://github.com/axxukaa/imagenes-borrador/blob/main/greimas/schoolteacher.png?raw=true" alt="">
+        ` },
+        { desc: "Greimas", texto: `
+            <img src=https://github.com/axxukaa/imagenes-borrador/blob/main/greimas/124.png?raw=true" alt="">
+        ` }
+    ];
+
+    function mostrar(idx) {
+        descEl.textContent = opciones[idx].desc;
+        panelEl.innerHTML = opciones[idx].texto;
+        panelEl.scrollTop = 0;
+    }
+    menu.querySelectorAll('.dmc-menu-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            menu.querySelectorAll('.dmc-menu-item').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            mostrar(parseInt(btn.dataset.idx, 10));
+        });
+    });
+    mostrar(0);
 })();
 </script>
 </body>
